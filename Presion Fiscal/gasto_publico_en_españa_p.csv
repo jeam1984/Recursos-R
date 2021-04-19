@@ -1,0 +1,103 @@
+﻿"Año";"Periodo";"Servicios públicos generales";"Defensa";"Orden público y seguridad";"Asuntos económicos";"Protección del medio ambiente";"Vivienda y servicios comunitarios";"Salud";"Ocio, cultura y religión";"Educación";"Protección social"
+"2012";"Año";"68.961";"9.679";"21.194";"82.844";"9.302";"4.824";"64.685";"12.653";"43.307";"182.728"
+"2013";"Año";"74.121";"9.862";"21.048";"47.347";"8.621";"4.681";"63.307";"11.810";"42.081";"184.448"
+"2014";"Año";"72.665";"8.950";"20.681";"45.579";"9.444";"5.223";"63.507";"11.791";"42.552";"185.258"
+"2015";"Año";"69.801";"10.416";"21.761";"47.261";"9.700";"5.628";"66.489";"12.436";"44.390";"185.080"
+"2016";"Año";"68.203";"10.888";"21.204";"43.162";"9.676";"4.979";"67.724";"12.325";"45.333";"189.239"
+"2017";"Año";"64.592";"10.374";"21.251";"44.850";"10.173";"5.154";"69.312";"12.803";"46.449";"193.722"
+"2018";"Año";"67.705";"10.283";"21.997";"48.909";"10.604";"5.418";"72.017";"13.353";"48.095";"203.116"
+;;;;;;;;;;;
+;;;;;;;;;;;
+"Métrica":"Servicios públicos generales"
+"Fuente":"Ministerio de Hacienda"
+"Clasificación":""
+"Unidad":"En euros"
+"Escala":"Millones"
+"EscalaFactorPotencia10":"6"
+"SonDatosNumericos":"True"
+;;;;;;;;;;;
+;;;;;;;;;;;
+"Métrica":"Defensa"
+"Fuente":"Ministerio de Hacienda"
+"Clasificación":""
+"Unidad":"En euros"
+"Escala":"Millones"
+"EscalaFactorPotencia10":"6"
+"SonDatosNumericos":"True"
+;;;;;;;;;;;
+;;;;;;;;;;;
+"Métrica":"Orden público y seguridad"
+"Fuente":"Ministerio de Hacienda"
+"Clasificación":""
+"Unidad":"En euros"
+"Escala":"Millones"
+"EscalaFactorPotencia10":"6"
+"SonDatosNumericos":"True"
+;;;;;;;;;;;
+;;;;;;;;;;;
+"Métrica":"Asuntos económicos"
+"Fuente":"Ministerio de Hacienda"
+"Clasificación":""
+"Unidad":"En euros"
+"Escala":"Millones"
+"EscalaFactorPotencia10":"6"
+"SonDatosNumericos":"True"
+;;;;;;;;;;;
+;;;;;;;;;;;
+"Métrica":"Protección del medio ambiente"
+"Fuente":"Ministerio de Hacienda"
+"Clasificación":""
+"Unidad":"En euros"
+"Escala":"Millones"
+"EscalaFactorPotencia10":"6"
+"SonDatosNumericos":"True"
+;;;;;;;;;;;
+;;;;;;;;;;;
+"Métrica":"Vivienda y servicios comunitarios"
+"Fuente":"Ministerio de Hacienda"
+"Clasificación":""
+"Unidad":"En euros"
+"Escala":"Millones"
+"EscalaFactorPotencia10":"6"
+"SonDatosNumericos":"True"
+;;;;;;;;;;;
+;;;;;;;;;;;
+"Métrica":"Salud"
+"Fuente":"Ministerio de Hacienda"
+"Clasificación":""
+"Unidad":"En euros"
+"Escala":"Millones"
+"EscalaFactorPotencia10":"6"
+"SonDatosNumericos":"True"
+;;;;;;;;;;;
+;;;;;;;;;;;
+"Métrica":"Ocio, cultura y religión"
+"Fuente":"Ministerio de Hacienda"
+"Clasificación":""
+"Unidad":"En euros"
+"Escala":"Millones"
+"EscalaFactorPotencia10":"6"
+"SonDatosNumericos":"True"
+;;;;;;;;;;;
+;;;;;;;;;;;
+"Métrica":"Educación"
+"Fuente":"Ministerio de Hacienda"
+"Clasificación":""
+"Unidad":"En euros"
+"Escala":"Millones"
+"EscalaFactorPotencia10":"6"
+"SonDatosNumericos":"True"
+;;;;;;;;;;;
+;;;;;;;;;;;
+"Métrica":"Protección social"
+"Fuente":"Ministerio de Hacienda"
+"Clasificación":""
+"Unidad":"En euros"
+"Escala":"Millones"
+"EscalaFactorPotencia10":"6"
+"SonDatosNumericos":"True"
+;;;;;;;;;;;
+;;;;;;;;;;;
+"Url":"https://www.epdata.es/gasto-publico-espana-partida-gasto/20ec2133-afd6-4a44-92aa-452b0843464c"
+"Titulo":"Gasto público en España por partida de gasto"
+"Subtitulo":""

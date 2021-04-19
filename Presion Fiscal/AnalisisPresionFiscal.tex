@@ -1,0 +1,243 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Ejemplo de periodismo de datos con R},
+  pdfauthor={Isaac Gonzalez - www.datascience4business.com},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Ejemplo de periodismo de datos con R}
+\author{Isaac Gonzalez - www.datascience4business.com}
+\date{}
+
+\begin{document}
+\maketitle
+
+\hypertarget{preparacion-del-analisis}{%
+\section{1. PREPARACION DEL ANALISIS}\label{preparacion-del-analisis}}
+
+El objetivo es aportar información rigurosa sobre el debate en cuanto al
+nivel impositivo de España:
+
+\begin{itemize}
+\tightlist
+\item
+  Analizando la presión fiscal (impuestos recaudados sobre el PIB)
+\item
+  Analizando el esfuerzo fiscal (nivel de esfuerzo del contribuyente
+  teniendo en cuenta su poder adquisitivo)
+\item
+  En qué se invierte el dinero recaudado
+\end{itemize}
+
+\hypertarget{analisis-de-la-presion-y-esfuerzo-fiscal}{%
+\section{2. ANALISIS DE LA PRESION Y ESFUERZO
+FISCAL}\label{analisis-de-la-presion-y-esfuerzo-fiscal}}
+
+Fuente de los datos:
+\url{https://www.elblogsalmon.com/indicadores-y-estadisticas/impuestos-esfuerzo-fiscal-espanoles-desmedido}
+
+Se ha utilizado tecnología OCR sobre la fuente citada para extraer los
+datos de la imagen y poder utilizarlos en los análisis.
+
+Tras el proceso de extracción con OCR y una primera limpieza de datos
+hemos obtenido la siguiente tabla:
+
+\begin{verbatim}
+##            pais presion_valor presion_ranking esfuerzo_valor esfuerzo_ranking
+## 1        Grecia        0.4107              11        26.2760                1
+## 2      Portugal        0.3653              13        20.2730                2
+## 3        Italia        0.4291               9        16.1710                3
+## 4       Francia        0.4707               1        13.9460                5
+## 5        España        0.3574              15        15.1370                4
+## 6       Bélgica        0.4621               2        12.0280                6
+## 7       Austria        0.4384               4        10.6580                Y
+## 8     Finlandia        0.4249               8        10.6450                8
+## 9      Alemania        0.4190               o        10.4950                9
+## 10       Suecia        0.4290               6        10.0000               11
+## 11    Dinamarca        0.4546               3         0.8856               15
+## 12   ReinoUnido        0.8850              16        10.3060               10
+## 13   Luxemburgo        0.4149              10         0.8947               14
+## 14 Países_Bajos        0.3815              12         0.9074               13
+## 15        Japón        0.3377              17         0.9149                a
+## 16      Noruega        0.4281               7         0.7376               16
+## 17     Islandia        0.3594              14         0.6629               17
+## 18      Irlanda        0.2186              20         0.6051               18
+## 19        EEUU.        0.2505              19         0.4673               19
+## 20        Suiza        0.2881              18         0.4295               20
+\end{verbatim}
+
+Vemos que en los rankings hay datos que el ocr no ha podido extraerlos
+bien.
+
+Pero los valores sí parecen estar todos bien.
+
+Así que vamos a generar de nuevo los rankings a partir de los valores.
+
+Nos fijamos en que el valor 1 se le da al valor más alto en ambos casos.
+
+\begin{verbatim}
+##            pais presion_valor presion_ranking esfuerzo_valor esfuerzo_ranking
+## 1        Grecia        0.4107              12        26.2760                1
+## 2      Portugal        0.3653              14        20.2730                2
+## 3        Italia        0.4291               6        16.1710                3
+## 4       Francia        0.4707               2        13.9460                5
+## 5        España        0.3574              16        15.1370                4
+## 6       Bélgica        0.4621               3        12.0280                6
+## 7       Austria        0.4384               5        10.6580                7
+## 8     Finlandia        0.4249               9        10.6450                8
+## 9      Alemania        0.4190              10        10.4950                9
+## 10       Suecia        0.4290               7        10.0000               11
+## 11    Dinamarca        0.4546               4         0.8856               15
+## 12   ReinoUnido        0.8850               1        10.3060               10
+## 13   Luxemburgo        0.4149              11         0.8947               14
+## 14 Países_Bajos        0.3815              13         0.9074               13
+## 15        Japón        0.3377              17         0.9149               12
+## 16      Noruega        0.4281               8         0.7376               16
+## 17     Islandia        0.3594              15         0.6629               17
+## 18      Irlanda        0.2186              20         0.6051               18
+## 19        EEUU.        0.2505              19         0.4673               19
+## 20        Suiza        0.2881              18         0.4295               20
+\end{verbatim}
+
+\pagebreak
+
+Ahora ya pasamos a la fase de visualización.
+
+Analizamos primero como está España en cuanto a presión fiscal
+(impuestos recaudados / PIB)
+
+\includegraphics{AnalisisPresionFiscal_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\pagebreak
+
+Pero ahora vemos el esfuerzo fiscal (ajuste por renta per capita)
+
+\includegraphics{AnalisisPresionFiscal_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\pagebreak
+
+Y ahora vamos a crear un mapa de posicionamiento con los 2 indicadores a
+la vez
+
+\includegraphics{AnalisisPresionFiscal_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\pagebreak
+
+\hypertarget{analisis-de-las-partidas-del-gasto}{%
+\section{3. ANALISIS DE LAS PARTIDAS DEL
+GASTO}\label{analisis-de-las-partidas-del-gasto}}
+
+Parece que aunque a nivel del indicador de presión fiscal España todavía
+tendría recorrido para subir impuestos, cuando analizamos el esfuerzo
+real que los impuestos actuales ya suponen para el contribuyente solo
+hay 3 países por encima de España.
+
+En muchos casos se justifica ese esfuerzo alegando que es necesario para
+mantener servicios como la sanidad, la educación o la protección social.
+
+Vamos a visualizar cómo se distribuyen las partidas del gasto público
+según datos del Ministerio de Hacienda obtenidos de:
+
+\url{https://www.epdata.es/datos/gasto-publico-espana-datos-graficos/256}
+
+Gráfico: Gasto público en España por partida de gasto
+
+A partir de la fuente citada y limpiando y organizando los datos
+obtenemos la siguiente tabla:
+
+\begin{verbatim}
+## # A tibble: 10 x 6
+##    ano   partida                            gasto  total  porc porc_acum
+##    <chr> <chr>                              <dbl>  <dbl> <dbl>     <dbl>
+##  1 2018  proteccion_social                 203116 501497 40.5       40.5
+##  2 2018  salud                              72017 501497 14.4       54.9
+##  3 2018  servicios_publicos_generales       67705 501497 13.5       68.4
+##  4 2018  asuntos_economicos                 48909 501497  9.75      78.1
+##  5 2018  educacion                          48095 501497  9.59      87.7
+##  6 2018  orden_publico_y_seguridad          21997 501497  4.39      92.1
+##  7 2018  ocio_cultura_y_religion            13353 501497  2.66      94.8
+##  8 2018  proteccion_del_medio_ambiente      10604 501497  2.11      96.9
+##  9 2018  defensa                            10283 501497  2.05      98.9
+## 10 2018  vivienda_y_servicios_comunitarios   5418 501497  1.08     100
+\end{verbatim}
+
+\pagebreak
+
+Que podemos ver de forma gráfica
+
+\includegraphics{AnalisisPresionFiscal_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\hypertarget{conclusiones}{%
+\section{4. CONCLUSIONES}\label{conclusiones}}
+
+\begin{itemize}
+\item
+  La presión fiscal en España es de las más bajas, ocupando el puesto 16
+  en un ranking de 20 países
+\item
+  Sin embargo, el esfuerzo real para los contribuyentes es de los
+  mayores, ocupando el puesto 4 en un ranking de 20 países
+\item
+  El gasto de sanidad + educación suma el 23.95 por ciento
+\item
+  Y si añadimos protección social suma el 64.45 por ciento
+\item
+  QUE CADA UNO SAQUE SUS PROPIAS CONCLUSIONES!!!
+\end{itemize}
+
+\end{document}
