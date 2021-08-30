@@ -2,11 +2,11 @@
 title: "Clustering dataset Covid"
 author: "Jorge Arias"
 date: "02/09/2020"
-output:
-  html_document:
-    theme: cerulean
-    toc: yes
-    toc_depth: 1
+#output:
+ # html_document:
+  #  theme: cerulean
+   # toc: yes
+    #toc_depth: 1
 ---
 
 0. - Parámetros
