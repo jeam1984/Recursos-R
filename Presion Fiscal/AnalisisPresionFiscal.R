@@ -2,9 +2,9 @@
 title: "Ejemplo de periodismo de datos con R"
 author: "Isaac Gonzalez - www.datascience4business.com"
 output:
-  html_document:
-    df_print: paged
-  pdf_document: default
+  #html_document:
+  #  df_print: paged
+ # pdf_document: default
 editor_options:
   chunk_output_type: console
 ---
